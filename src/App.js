@@ -52,14 +52,15 @@ const  App = () => {
         {Questions[currentQuestion].answers.map((answerOption) =>
         (
            <li className="answer-list" key={uuidv4()}>
-            <button className={`answer-button ${clicked &&  answerOption.isCorrect ? "correct": "" }`}
+            <button disabled ={clicked} 
+            className={`answer-button ${clicked &&  answerOption.isCorrect ? "correct": "" }`}
              onClick={()=>handleCorrectAnswer(answerOption.isCorrect)}>{answerOption.answer}</button>
            </li>
         ))}
       </div>
 
     <div>
-      <button className="next-button" onClick={handleNextQuestion}>Next</button>
+      <button className="next-button" onClick={handleNextQuestion} disabled={!clicked}>Next</button>
     </div>
     </div>
     )}
