@@ -47,7 +47,7 @@ const Questions = [
         {answer: "1" , isCorrect: true},
         {answer: "2" , isCorrect: false},
         {answer: "4" , isCorrect: false},
-        {answer: "5" , isCorrect: true},
+        {answer: "5" , isCorrect: false},
     ],
 },
 
