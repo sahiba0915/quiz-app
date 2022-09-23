@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect }from "react";
 import './App.css';
 import Questions from './Components/Questions';
 import {v4 as uuidv4} from "uuid";
@@ -6,10 +6,20 @@ import {v4 as uuidv4} from "uuid";
 
 const  App = () => {
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState (() => {
+  const saved = localStorage.getItem("currentQuestion");
+  const initialValue = JSON.parse(saved);
+  return initialValue || 0 ;
+  });
+
   const [score, setScore] = useState(0);
   const [clicked, setClicked] = useState(false);
   const [showScore, setShowScore] = useState(false);
+
+
+  useEffect(() =>{
+    localStorage.setItem("currentQuestion", JSON.stringify(currentQuestion));
+  }, [currentQuestion]);
 
 
   const handleCorrectAnswer = (isCorrect) => {
